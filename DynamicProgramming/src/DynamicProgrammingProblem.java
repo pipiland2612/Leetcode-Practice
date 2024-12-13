@@ -50,4 +50,10 @@ public class DynamicProgrammingProblem {
         int n = nums.length;
         return Math.max(helper(nums, 0, n - 2), helper(nums, 1, n - 1));
     }
+
+    //Longest Palindromic Substring
+    public static String longestPalindrome(String s) {
+
+        return s;
+    }
 }
