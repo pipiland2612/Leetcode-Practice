@@ -53,7 +53,25 @@ public class DynamicProgrammingProblem {
 
     //Longest Palindromic Substring
     public static String longestPalindrome(String s) {
-
-        return s;
+        int n = s.length();
+        int[][] dp = new int[n][n];
+        int index = 0, maxLength = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            for(int j = i; j < n; j++){
+                if(s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1] == 1)){
+                    dp[i][j] = 1;
+                    if(maxLength < j - i + 1){
+                        maxLength = j - i + 1;
+                        index = i;
+                    }
+                }
+            }
+        }
+        return s.substring(index, index + maxLength);
     }
+    public static void main(String[] args) {
+        System.out.println(longestPalindrome("babad"));
+        System.out.println(longestPalindrome("cbbdad"));
+    }
+
 }
