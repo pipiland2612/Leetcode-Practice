@@ -69,6 +69,27 @@ public class DynamicProgrammingProblem {
         }
         return s.substring(index, index + maxLength);
     }
+    // Palindromic substrings
+    public int countSubstrings(String s) {
+        int n = s.length();
+        int[][] dp = new int[n][n];
+        int count = 0;
+        for(int i = n - 1; i >= 0; i--){
+            for(int j = i; j < n; j++){
+                if(s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1] == 1)){
+                    dp[i][j] = 1;
+                    count ++;
+                }
+            }
+        }
+        return count;
+    }
+
+    //Decode ways
+    public int numDecodings(String s) {
+
+        return 0;
+    }
     public static void main(String[] args) {
         System.out.println(longestPalindrome("babad"));
         System.out.println(longestPalindrome("cbbdad"));
