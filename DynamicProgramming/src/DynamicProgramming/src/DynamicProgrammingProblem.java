@@ -1,8 +1,10 @@
+package DynamicProgramming.src;
+
 import java.util.*;
 
 public class DynamicProgrammingProblem {
     // Climb stairs Problem
-    public static int climbStairs(int n) {
+    public int climbStairs(int n) {
         int[] dp = new int[n + 1];
         for (int i = 0; i <= 2; i++) {
             dp[i] = i;
@@ -15,7 +17,7 @@ public class DynamicProgrammingProblem {
     }
 
     // Min cost problems
-    public static int minCostClimbingStairs(int[] cost) {
+    public int minCostClimbingStairs(int[] cost) {
         int n = cost.length;
         int[] dp = new int[n + 1];
         dp[n] = 0;
@@ -27,7 +29,7 @@ public class DynamicProgrammingProblem {
     }
 
     // House robber 1
-    public static int rob(int[] nums) {
+    public int rob(int[] nums) {
         int[] dp = new int[nums.length + 1];
         dp[0] = 0;
         dp[1] = nums[0];
@@ -38,7 +40,7 @@ public class DynamicProgrammingProblem {
     }
 
     // House robber 2
-    private static int helper(int[] nums, int start, int end){
+    private int helper(int[] nums, int start, int end){
         int n = end - start + 1;
         int[] dp = new int[n + 1];
         dp[0] = 0;
@@ -48,13 +50,14 @@ public class DynamicProgrammingProblem {
         }
         return dp[n];
     }
-    public static int rob2(int[] nums){
+    public int rob2(int[] nums){
         int n = nums.length;
+        if(n == 1)return nums[0];
         return Math.max(helper(nums, 0, n - 2), helper(nums, 1, n - 1));
     }
 
     //Longest Palindromic Substring
-    public static String longestPalindrome(String s) {
+    public String longestPalindrome(String s) {
         int n = s.length();
         int[][] dp = new int[n][n];
         int index = 0, maxLength = 0;
@@ -89,7 +92,7 @@ public class DynamicProgrammingProblem {
     }
 
     //Decode ways
-    public static int numDecodings(String s) {
+    public int numDecodings(String s) {
         int n = s.length();
         int[] count1 = new int[n], count2 = new int[n];
         if(s.charAt(0) != '0'){
@@ -113,7 +116,7 @@ public class DynamicProgrammingProblem {
     }
 
     // Coin change problem
-    public static int coinChange(int[] coins, int amount) {
+    public int coinChange(int[] coins, int amount) {
         int[] dp = new int[amount + 1];
         Arrays.fill(dp, amount + 1);
         dp[0] = 0;
@@ -127,7 +130,7 @@ public class DynamicProgrammingProblem {
     }
 
     // Maximum Product subarray
-    public static int maxProduct(int[] nums) {
+    public int maxProduct(int[] nums) {
         int maxProduct = nums[0];
         int prefix = 0, suffix = 0;
         for(int i = 0; i < nums.length; i++){
@@ -136,10 +139,6 @@ public class DynamicProgrammingProblem {
             maxProduct = Math.max(maxProduct, Math.max(prefix, suffix));
         }
         return maxProduct;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(coinChange(new int[]{1,2,5},11));
     }
 
 }
